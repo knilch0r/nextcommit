@@ -1,8 +1,10 @@
-#/usr/bin/perl -w
+#!/usr/bin/perl -w
 
 # generates a random 1337speak commit that hasn't been in the repo yet.
 
-@slw = qw(
+use strict;
+
+my @slw = qw(
 babba6e b16f007 b0bb1e5 5ea51de 7aba5c0 acac1a5 0acce55 0ac1d1c ada6105 0add1c7
 affec75 a617a7e a5ce71c 0a55e75 0a55157 a551575 0a77e57 a77e575 0a771c5 0bab1e5
 badde57 8bad6e5 ba66a6e 0ba17ed 0ba51c5 ba55157 8bea575 bed51de 0b1a5ed 0b1a5e5
@@ -17,7 +19,26 @@ defea75 0defec7 defec75 def1c17 de51575 0de7ec7 de7ec75 de7e575 d1c7a7e d16e575
 6001e57 1d1071c 0ffbea7 0ff1ce5 0ff5e75 0ff51de 5adde57 5eabed5 5eaf00d 5ea51de
 5eceded 5eda7ed 5eda7e5 51e57a5 50f7e57 57abbed 57affed 057a6e5 057a71c 571ffed
 57006e5 7ab00ed 7ac71c5 7affe7a 7aff1e5 7a77005 71db175 71d1e57 70a57ed 70ff1e5
+0dadada aaaaaaa 0000000
  );
 
-@tlw = qw(
+my @tlw = qw(
+150 ace add bad b16 b17 ca7 d06 d05 d07 ea7 e66 fa7 f17 60d 600 105 1ce 0dd 0ff
+5ad 5ea 5ee 5e7
+ );
 
+my @flw = qw(
+ac75 ba55 be57 ca5e dada fed5 5e6a 71de ace5 ac1d add5 a6ed babe ba65 ba17 ba5e
+bea7 beef bee5 be7a b1a5 b17e b175 b0a7 b007 b055 cafe ca57 ca75 c0de c057 data
+da7e deb7 deed d1ce d1e7 d15c d0c5 d0d0 d05e d07e d075 ed6e ed17 face fac7 fa57
+fa7e fea7 feed fee5 fee7 f00d f007 fe7e 6a65 6157 60a7 60d5 600f 1dea 0a75 5afe
+5a6a 5ea7 5ec7 5eed 51de 50da 50fa 50f7 7ac0 7e57 7055
+ );
+
+my @words = @slw;
+foreach my $w (@tlw) {
+	push(@words, map { $w . $_ } @flw);
+	push(@words, map { $_ . $w } @flw);
+}
+
+print $#words;
