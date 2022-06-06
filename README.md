@@ -23,3 +23,14 @@ to number my commits in [binary](https://en.wikipedia.org/wiki/Binary_number)
 so I can remember them without the need to squeeze magic 7-character hex
 incantations into my brain.
 
+## deploy
+
+to install,
+```
+sudo make install
+```
+to uninstall,
+```
+sudo make uninstall
+```
+
