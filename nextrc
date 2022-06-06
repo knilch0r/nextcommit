@@ -1,0 +1,23 @@
+#/usr/bin/perl -w
+
+# generates a random 1337speak commit that hasn't been in the repo yet.
+
+@slw = qw(
+babba6e b16f007 b0bb1e5 5ea51de 7aba5c0 acac1a5 0acce55 0ac1d1c ada6105 0add1c7
+affec75 a617a7e a5ce71c 0a55e75 0a55157 a551575 0a77e57 a77e575 0a771c5 0bab1e5
+badde57 8bad6e5 ba66a6e 0ba17ed 0ba51c5 ba55157 8bea575 bed51de 0b1a5ed 0b1a5e5
+b166e57 b1661e5 b15ec7d b15ec75 b0a57ed b10a7ed b0bca75 b0061e5 b0057ed 8b00575
+0b007ed 0b055e5 cabba6e cab005e cadd1e5 ca5cade ca570ff ca7b0a7 0cea5ed c1cadae
+c1cada5 c0a57ed 0c0ffee c0ffee5 c051e57 c077a6e daf7e57 da151e5 deba5ed 0deba7e
+deba7ed deb17ed decade5 dece175 dec1ded 0dec0de dec0ded defaced deface5 0defea7
+defea75 0defec7 defec75 def1c17 de51575 0de7ec7 de7ec75 de7e575 d1c7a7e d16e575
+8d16175 d155ec7 0d0d6ed ea51e57 ed61e57 ed1f1ed ed1f1e5 0ed17ed 0effec7 effec75
+0facade facade5 face7ed fa57e57 fa77e57 fea57ed feedba6 0f1a5c0 f1a5c05 f1d6e75
+0f1e57a f1e57a5 0f177ed f177e57 f007a6e 6ad6e75 061f7ed 616ab17 60dde55 600d1e5
+6001e57 1d1071c 0ffbea7 0ff1ce5 0ff5e75 0ff51de 5adde57 5eabed5 5eaf00d 5ea51de
+5eceded 5eda7ed 5eda7e5 51e57a5 50f7e57 57abbed 57affed 057a6e5 057a71c 571ffed
+57006e5 7ab00ed 7ac71c5 7affe7a 7aff1e5 7a77005 71db175 71d1e57 70a57ed 70ff1e5
+ );
+
+@tlw = qw(
+
