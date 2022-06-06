@@ -1,0 +1,31 @@
+#!/usr/bin/perl -w
+
+# generates a numeric upwards-counting commit that hasn't been in the repo yet.
+
+use strict;
+
+sub idtaken($) {
+	my $i = shift;
+	return 1 if (system("git rev-parse --verify -q $i >&2") == 0);
+	return 0;
+}
+
+my $id = substr `git rev-parse HEAD~`, 0, 7;
+die("could not rev-parse HEAD~: $?\n") if $?;
+my $num=oct('0b'.$id);
+print STDERR "Warning: $id got binary value 0\n" if $num == 0;
+my $count = 0;
+do {
+	$num++;
+	$count++;
+	$id = sprintf('%07b', $num);
+} while (idtaken($id) && ($count <= 50));
+
+if ($count < 50) {
+	print "$id\n";
+	exit 0;
+} else {
+	print STDERR "Error: tried 50 times.\n";
+	exit 1;
+}
+
