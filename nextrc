@@ -35,10 +35,32 @@ fa7e fea7 feed fee5 fee7 f00d f007 fe7e 6a65 6157 60a7 60d5 600f 1dea 0a75 5afe
 5a6a 5ea7 5ec7 5eed 51de 50da 50fa 50f7 7ac0 7e57 7055
  );
 
+sub idtaken($) {
+	my $i = shift;
+	return 1 if (system(qw(git rev-parse --verify -q), $i) == 0);
+	return 0;
+}
+
 my @words = @slw;
 foreach my $w (@tlw) {
 	push(@words, map { $w . $_ } @flw);
 	push(@words, map { $_ . $w } @flw);
 }
 
-print $#words;
+my $id;
+$id = $slw[rand $#slw] if (rand(2) < 1);
+$id //= $words[rand $#words];
+my $count = 0;
+while (idtaken($id) && ($count < 50)) {
+	$count++;
+	$id = $words[rand $#words];
+}
+
+if ($count < 50) {
+	print "$id\n";
+	exit 0;
+} else {
+	print STDERR "Error: tried 50 times.\n";
+	exit 1;
+}
+

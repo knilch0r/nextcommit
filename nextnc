@@ -1,0 +1,30 @@
+#!/usr/bin/perl -w
+
+# generates a numeric upwards-counting commit that hasn't been in the repo yet.
+
+use strict;
+
+sub idtaken($) {
+	my $i = shift;
+	return 1 if (system(qw(git rev-parse --verify -q), $i) == 0);
+	return 0;
+}
+
+my $id;
+$id = substr `git rev-parse HEAD~`, 0, 7;
+die("could not rev-parse HEAD~: $?\n") if $?;
+$id++;
+my $count = 0;
+while (idtaken($id) && ($count < 50)) {
+	$count++;
+	$id++;
+}
+
+if ($count < 50) {
+	print "$id\n";
+	exit 0;
+} else {
+	print STDERR "Error: tried 50 times.\n";
+	exit 1;
+}
+
