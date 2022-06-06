@@ -6,7 +6,7 @@ use strict;
 
 sub idtaken($) {
 	my $i = shift;
-	return 1 if (system(qw(git rev-parse --verify -q), $i) == 0);
+	return 1 if (system("git rev-parse --verify -q $i >&2") == 0);
 	return 0;
 }
 

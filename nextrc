@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# generates a random 1337speak commit that hasn't been in the repo yet.
+# generates a random hexspeak commit that hasn't been in the repo yet.
 
 use strict;
 
@@ -37,7 +37,7 @@ fa7e fea7 feed fee5 fee7 f00d f007 fe7e 6a65 6157 60a7 60d5 600f 1dea 0a75 5afe
 
 sub idtaken($) {
 	my $i = shift;
-	return 1 if (system(qw(git rev-parse --verify -q), $i) == 0);
+	return 1 if (system("git rev-parse --verify -q $i >&2") == 0);
 	return 0;
 }
 
